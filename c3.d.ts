@@ -1037,12 +1037,12 @@ declare namespace c3 {
           },
           factor: any,
           left: any,
-          zoomAndPanByRatio: void,
-          zoomIn: void,
-          zoomOut: void,
-          panLeft: void,
-          panRight: void,
-          reset: void
+          zoomAndPanByRatio: (() => any),
+          zoomIn: (() => any),
+          zoomOut: (() => any),
+          panLeft: (() => any),
+          panRight: (() => any),
+          reset: (() => any)
         };
 
         /**

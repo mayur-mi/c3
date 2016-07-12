@@ -320,11 +320,11 @@
     }
 
     c3.generate = function (config) {
-        if (options.zoom2 != null) {
-            zoom2_reducers = options.zoom2.reducers || {};
-            zoom2_enabled = options.zoom2.enabled;
-            _zoom2_factor = options.zoom2.factor || 1;
-            _zoom2_maxItems = options.zoom2.maxItems;
+        if (config.zoom2 != null) {
+            var zoom2_reducers = config.zoom2.reducers || {};
+            var zoom2_enabled = config.zoom2.enabled;
+            var _zoom2_factor = config.zoom2.factor || 1;
+            var _zoom2_maxItems = config.zoom2.maxItems;
         }
 
         if (!zoom2_enabled) {
@@ -332,13 +332,13 @@
         }
 
 
-        var originalData = Q.copy(options.data);
+        var originalData = Q.copy(config.data);
         var zoom2_reducers;
         var zoom2_enabled;
         var _zoom2_maxItems;
 
         if (_zoom2_maxItems == null) {
-            var el = d3.select(options.bindto)[0][0];
+            var el = d3.select(config.bindto)[0][0];
             if (el != null) {
                 var availWidth = el.clientWidth;
 
@@ -354,7 +354,7 @@
             refresh();
         }
 
-        var zoom2 = ZoomBehavior({ changed: onZoomChanged, bindto: options.bindto });
+        var zoom2 = ZoomBehavior({ changed: onZoomChanged, bindto: config.bindto });
 
         zoom2.enhance = function () {
             _zoom2_maxItems *= 2;
@@ -404,7 +404,7 @@
             return data;
         };
 
-        getDataForZoom(options.data);
+        getDataForZoom(config.data);
         var chart = new Chart(config);
         var _chart_load_org = chart.load.bind(chart);
         chart.zoom2 = zoom2;
