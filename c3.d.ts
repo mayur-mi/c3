@@ -131,6 +131,10 @@ declare namespace c3 {
 
         zoom?: ZoomOptions;
 
+        zoom2?: {
+          enabled?: boolean;
+        }
+
         point?: PointOptions;
 
         line?: {
@@ -316,7 +320,7 @@ declare namespace c3 {
          * Set chart type for each data.
          * This setting overwrites data.type setting.
          */
-        types?: { [key: string]: string };
+        types?: any;
         /**
          * Show labels on each data points or set formatter function for data labels.
          * The formatter function receives 4 arguments such as v, id, i, j and it must return a string that will be shown as the label. The arguments are:
@@ -327,8 +331,8 @@ declare namespace c3 {
          * Formatter function can be defined for each data by specifying as an object and D3 formatter function can be set (e.g. d3.format('$'))
          */
         labels?: boolean |
-        { format: FormatFunction } |
-        { format: { [key: string]: FormatFunction } };
+            { format: FormatFunction } |
+            { format: { [key: string]: FormatFunction } };
         /**
          * Define the order of the data.
          * This option changes the order of stacking the data and pieces of pie/donut. If null specified, it will be the order the data loaded. If function specified, it will be used to sort the data and it will recieve the data as argument.
@@ -349,7 +353,7 @@ declare namespace c3 {
         /**
          * Set color for each data.
          */
-        colors?: { [key: string]: string | d3.Rgb };
+        colors?: any;
         /**
          * Hide each data when the chart appears.
          * If true specified, all of data will be hidden. If multiple ids specified as an array, those will be hidden.
@@ -409,7 +413,7 @@ declare namespace c3 {
         /**
          * Set type of x axis (timeseries, category, indexed)
          */
-        type?: string;
+            type?: string;
         /**
          * Set how to treat the timezone of x values.
          * If true, treat x value as localtime. If false, convert to UTC internally.
@@ -500,7 +504,7 @@ declare namespace c3 {
         /**
          * Set default range of y axis. This option set the default value for y axis when there is no data on init.
          */
-        default?: Array<number>;
+            default?: Array<number>;
 
     }
 
@@ -514,14 +518,14 @@ declare namespace c3 {
          */
         format?: string | ((x: number | Date) => string | number);
         /**
-        * Setting for culling ticks.
-        * If true is set, the ticks will be culled, then only limitted tick text will be shown. This option does not hide the tick lines. If false is set, all of ticks will be shown.
-        */
+         * Setting for culling ticks.
+         * If true is set, the ticks will be culled, then only limitted tick text will be shown. This option does not hide the tick lines. If false is set, all of ticks will be shown.
+         */
         culling?: boolean | CullingConfiguration;
         /**
          * The number of x axis ticks to show.
          * This option hides tick lines together with tick text. If this option is used on timeseries axis, the ticks position will be determined precisely and not nicely positioned (e.g. it will have rough second value).
-        */
+         */
         count?: number;
         /**
          * Fit x axis ticks.
@@ -561,14 +565,14 @@ declare namespace c3 {
         /**
          * The number of y axis ticks to show.
          * The position of the ticks will be calculated precisely, so the values on the ticks will not be rounded nicely. In the case, axis.y.tick.format or axis.y.tick.values will be helpful.
-        */
+         */
         count?: number;
     }
 
     interface CullingConfiguration {
         /**
-        * The number of tick texts will be adjusted to less than this value.
-        */
+         * The number of tick texts will be adjusted to less than this value.
+         */
         max: number;
     }
 
@@ -747,7 +751,7 @@ declare namespace c3 {
         /**
          * The radius size of each point.
          */
-        r?: number;
+        r?: any;
 
         focus?: {
             expand: {
@@ -1031,15 +1035,15 @@ declare namespace c3 {
             totalItems: number,
             currentZoom: Array<number>
           },
-          factor: number | null | void,
-          left: number | null | void,
+          factor: any,
+          left: any,
           zoomAndPanByRatio: void,
           zoomIn: void,
           zoomOut: void,
           panLeft: void,
           panRight: void,
           reset: void
-        }
+        };
 
         /**
          * Unzoom to the original domain.
